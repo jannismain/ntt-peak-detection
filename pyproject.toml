@@ -1,5 +1,5 @@
 [project]
-name = "ntt_peak_detection"
+name = "ntt_peaks"
 version = "0.0.1"
 description = "Detect peaks in measured signals"
 readme = "README.md"
@@ -20,8 +20,8 @@ test = ["pytest"]
 [project.scripts] # Optional
 ntt_peaks = "ntt_peaks.__main__:cli"
 
-[tool.setuptools]
-package-data = { "ntt_peaks.data" = ["*.csv"] }
+[tool.setuptools.package-data]
+"*" = ["*.csv"]
 
 [build-system]
 requires = ["setuptools>=43.0.0", "wheel"]
