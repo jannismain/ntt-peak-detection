@@ -3,10 +3,14 @@ import pytest
 import ntt_peaks
 from ntt_peaks import Signal
 from ntt_peaks.data import load_example_data
+from ntt_peaks.util import _get_all_algorithms
 
 
 @pytest.mark.parametrize("data,n_peaks_expected", [([0, 0, 5, 0, 0], 1)])
-@pytest.mark.parametrize("peak_detection_algorithm", ["neighbours"])
+@pytest.mark.parametrize(
+    "peak_detection_algorithm",
+    list(_get_all_algorithms()),
+)
 def test_peak_detection_synthetic_data(
     data, n_peaks_expected, peak_detection_algorithm
 ):
@@ -18,7 +22,10 @@ def test_peak_detection_synthetic_data(
     assert len(peak_idxs) == n_peaks_expected
 
 
-@pytest.mark.parametrize("peak_detection_algorithm", ["neighbours"])
+@pytest.mark.parametrize(
+    "peak_detection_algorithm",
+    list(_get_all_algorithms()),
+)
 @pytest.mark.parametrize(
     "data",
     load_example_data(),
