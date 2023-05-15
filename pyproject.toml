@@ -1,0 +1,25 @@
+[project]
+name = "ntt_peak_detection"
+version = "0.0.1"
+description = "Detect peaks in measured signals"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE.txt" }
+keywords = ["signal", "peak", "detection"]
+authors = [{ name = "Jannis Mainczyk", email = "jmainczyk@gmail.com" }]
+dependencies = ["numpy", "scipy"]
+
+[project.optional-dependencies]
+dev = ["black"]
+test = ["pytest", "coverage"]
+
+[project.urls]
+"Homepage" = "https://github.com/jannismain/ntt_peak_detection"
+"Bug Reports" = "https://github.com/jannismain/ntt_peak_detection/issues"
+
+[project.scripts] # Optional
+ntt_peaks = "ntt_peaks.__main__:cli"
+
+[build-system]
+requires = ["setuptools>=43.0.0", "wheel", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
