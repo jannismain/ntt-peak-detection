@@ -1,4 +1,6 @@
-from ntt_peaks import Signal
+import numpy as np
+
+from . import Signal
 
 
 def neighbours(s: Signal) -> Signal:
@@ -11,5 +13,22 @@ def neighbours(s: Signal) -> Signal:
     ]
 
 
-if __name__ == "__main__":
-    print(_get_all_algorithms())
+def threshold(s: Signal) -> Signal:
+    """Detect a peak by comparing values to a threshold value."""
+    threshold = np.mean(s.y) * 2
+    results = np.where(s.y > threshold)
+    print(results)
+    return [idx for idx in range(len(s.y)) if s.y[idx] > threshold]
+
+
+def scipy_regular(s: Signal) -> list[int]:
+    import scipy
+
+    peaks, _ = scipy.signal.find_peaks(s.y)
+    return peaks
+
+
+def scipy_cwt(s: Signal) -> list[int]:
+    import scipy
+
+    return scipy.signal.find_peaks_cwt(s.y, widths=[1, 2, 3, 4, 5])
