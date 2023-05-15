@@ -20,6 +20,9 @@ test = ["pytest"]
 [project.scripts] # Optional
 ntt_peaks = "ntt_peaks.__main__:cli"
 
+[tool.setuptools]
+package-data = { "ntt_peaks" = ["*.csv"] }
+
 [build-system]
-requires = ["setuptools>=43.0.0", "wheel", "setuptools_scm"]
+requires = ["setuptools>=43.0.0", "wheel"]
 build-backend = "setuptools.build_meta"

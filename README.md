@@ -3,9 +3,20 @@
 ## Plan
 
 - [x] Research peak detection algorithms
-- [ ] Setup project structure
-- [ ] Implement and test peak detection algorithm
+- [x] Setup project structure
+- [x] Implement and test peak detection algorithm
 - [ ] Add FastAPI web interface
+
+## Getting Started
+
+### Installation
+
+    pip install git+https://github.com/jannismain/ntt-peak-detection.git
+
+### Usage
+
+    ntt_peaks
+    ntt_peaks [[CSV_FILE] ..]
 
 ## Background
 

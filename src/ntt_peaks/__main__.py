@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 from ntt_peaks import Signal, detect_peaks, load
+from ntt_peaks.data import load_example_data
 
 algorithms = ["neighbours"]
 
@@ -15,7 +16,7 @@ def cli():
     dataset_args = sys.argv[1:]
 
     if len(dataset_args) == 0:
-        datasets = [pathlib.Path() / "test" / "data" / "size-distribution1.csv"]
+        datasets = load_example_data()
     elif len(dataset_args) == 1:
         datasets = [pathlib.Path(dataset_args[0])]
     else:
@@ -43,8 +44,8 @@ def cli():
     fig.show()
 
 
-def main(fp: pathlib.Path) -> list[Signal]:
-    data = load(fp)
+def main(dataset: pathlib.Path) -> list[Signal]:
+    data = load(dataset) if isinstance(dataset, pathlib.Path) else dataset
     return [
         data,
         *[process(data, algorithm) for algorithm in algorithms],

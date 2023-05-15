@@ -1,21 +1,4 @@
-import inspect
-import sys
-from types import FunctionType
-
-from ntt_peaks.data import Signal
-
-
-def detect_peaks(s: Signal, algorithm: str = "neighbours") -> list[int]:
-    """Detect peaks in given signal and return their indices."""
-    return _get_all_algorithms()[algorithm](s)
-
-
-def _get_all_algorithms() -> dict[str, FunctionType]:
-    return {
-        name: obj
-        for name, obj in inspect.getmembers(sys.modules[__name__])
-        if inspect.isfunction(obj) and name != detect_peaks
-    }
+from ntt_peaks import Signal
 
 
 def neighbours(s: Signal) -> Signal:
