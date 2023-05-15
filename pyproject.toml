@@ -7,11 +7,11 @@ requires-python = ">=3.10"
 license = { file = "LICENSE.txt" }
 keywords = ["signal", "peak", "detection"]
 authors = [{ name = "Jannis Mainczyk", email = "jmainczyk@gmail.com" }]
-dependencies = ["numpy", "scipy"]
+dependencies = ["scipy", "plotly"]
 
 [project.optional-dependencies]
 dev = ["black"]
-test = ["pytest", "coverage"]
+test = ["pytest"]
 
 [project.urls]
 "Homepage" = "https://github.com/jannismain/ntt_peak_detection"
