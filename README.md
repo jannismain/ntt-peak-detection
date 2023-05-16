@@ -83,3 +83,4 @@ As the requirements state that the data will not include noise, data preprocessi
 - extend api to support x- and y-values and return x-values of peaks (not index of y-values)
 - if no algorithm works on all data consistently, algorithm selection and parametrization should be included in the api call
 - extend test suite to include more corner cases and examples
+- separate optional code (cli, demo dashboard) into separate package (`ntt_peaks_demo`) so that `ntt_peaks` can be distributed & deployed with minimal code and dependencies
