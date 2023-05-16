@@ -6,9 +6,8 @@ from plotly.subplots import make_subplots
 
 from ntt_peaks import Signal, detect_peaks, load
 from ntt_peaks.data import load_example_data
-from ntt_peaks.util import _get_all_algorithms
 
-algorithms = list(_get_all_algorithms().keys())
+algorithms = ["neighbours_and_threshold"]
 
 
 def cli():
