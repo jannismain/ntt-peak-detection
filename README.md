@@ -62,4 +62,7 @@ As the requirements state that the data will not include noise, data preprocessi
 - interesting problem, as peak detection seems to highly depend on the characteristics of the data trying to detect peaks from
 - solution (**neighbours+threshold**) works reasonably well on training data without much hyperparameter optimization
 - solution to parsing list of numbers in FastAPI seems too complicated
-- requirements not filled exactly, as API only works on single list of values, not list of value pairs right now (peak index instead of peak x-value is returned)
+- requirements not fulfilled completely, as API only works on single list of values, not list of value pairs right now (peak index instead of peak x-value is returned)
+  - peak detection algorithms mostly work on y-values only
+  - Should have used a Panda dataframe to represent data in more convenient and performant way -> limited prior experience with Python data science libraries
+  - Own representation (`Signal(x,y,label)`) surely not the best way
