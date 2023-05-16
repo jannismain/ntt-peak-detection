@@ -54,7 +54,7 @@ def main(dataset: pathlib.Path) -> list[Signal]:
 
 
 def process(data: Signal, algorithm: str) -> Signal:
-    result = detect_peaks(data, algorithm)
+    result = detect_peaks(data.y, algorithm)
     print(f"{algorithm}: {result}")
     return Signal(
         x=[data.x[idx] for idx in result],
