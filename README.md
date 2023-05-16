@@ -2,12 +2,6 @@
 
 ![preview](https://github.com/jannismain/ntt-peak-detection/assets/14290527/9610a54c-1d23-46d7-9191-708fb654724e)
 
-## Plan
-
-- [x] Research peak detection algorithms
-- [x] Setup project structure
-- [x] Implement and test peak detection algorithm
-- [x] Add FastAPI web interface
 
 ## Getting Started
 
@@ -59,12 +53,26 @@ Maybe a combined approach (**neighbours + threshold**) could reduce the number o
 
 As the requirements state that the data will not include noise, data preprocessing can initially be disregarded.
 
+## Implementation Details
+
+Peak detection algorithms are implemented in `ntt_peaks.lib` and picked-up by the cli demo tool automatically. This allows for rapid prototyping of different algorithms and compare them on different data sets.
+
+## Plan
+
+- [x] Research peak detection algorithms
+- [x] Setup project structure
+- [x] Implement and test peak detection algorithm
+- [x] Add FastAPI web interface
+
 ## Final Thoughts
 
 - interesting problem, as peak detection seems to highly depend on the characteristics of the data trying to detect peaks from
-- solution (**neighbours+threshold**) works reasonably well on training data without much hyperparameter optimization
+- algorithm (**neighbours+threshold**) works reasonably well on training data without much custom optimization (threshold value is $2*mean$)
+  - performance on data with much higher/lower variance likely worse -> different way of determining threshold value
 - solution to parsing list of numbers in FastAPI seems too complicated
 - requirements not fulfilled completely, as API only works on single list of values, not list of value pairs right now (peak index instead of peak x-value is returned)
   - peak detection algorithms mostly work on y-values only
   - Should have used a Panda dataframe to represent data in more convenient and performant way -> limited prior experience with Python data science libraries
   - Own representation (`Signal(x,y,label)`) surely not the best way
+- if no algorithm works on all data consistently, algorithm selection and parametrization should be included in the api call
+- with more time, tests and documentation would have been extended
