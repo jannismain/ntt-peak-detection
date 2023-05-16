@@ -43,13 +43,14 @@ def load(
         reader = csv.DictReader(f, fieldnames=fieldnames, delimiter=delim)
         try:
             next(reader)  # skip header
-        except StopIteration as e:
+        except StopIteration:
             error(f"Empty file '{fp}'")
         try:
             data = [tuple(float(x) for x in row.values()) for row in reader]
         except TypeError:
             error(
-                f"Malformed data. A CSV file with values in two columns separated by '{delim}' is expected."
+                "Malformed data. A CSV file with values in two columns"
+                f" separated by '{delim}' is expected."
             )
         return Signal(
             x=[sample[0] for sample in data],

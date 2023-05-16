@@ -10,7 +10,7 @@ authors = [{ name = "Jannis Mainczyk", email = "jmainczyk@gmail.com" }]
 dependencies = ["scipy", "plotly", "fastapi[all]"]
 
 [project.optional-dependencies]
-dev = ["black"]
+dev = ["black", "flake8"]
 test = ["pytest"]
 
 [project.urls]

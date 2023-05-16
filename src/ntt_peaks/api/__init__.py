@@ -7,7 +7,8 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-# CommaSeparatedList parser taken from https://github.com/tiangolo/fastapi/issues/50#issuecomment-1267068112
+# CommaSeparatedList parser taken from
+# https://github.com/tiangolo/fastapi/issues/50#issuecomment-1267068112
 
 
 class TypeParametersMemoizer(type):
@@ -50,4 +51,4 @@ class CommaSeparatedList(list, metaclass=TypeParametersMemoizer):
         raise NotImplementedError("should be overridden in metaclass")
 
 
-from .endpoints import *
+from .endpoints import *  # noqa: E402, F401, F403

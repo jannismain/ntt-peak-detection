@@ -3,8 +3,6 @@
 import inspect
 from types import FunctionType
 
-from . import Signal
-
 
 def detect_peaks(v: list[int | float], algorithm: str = "neighbours") -> list[int]:
     """Detect peaks in given signal and return their indices."""
