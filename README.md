@@ -1,5 +1,7 @@
 # Peak Detection
 
+![preview](https://github.com/jannismain/ntt-peak-detection/assets/14290527/9610a54c-1d23-46d7-9191-708fb654724e)
+
 ## Plan
 
 - [x] Research peak detection algorithms
