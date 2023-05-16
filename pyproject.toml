@@ -10,7 +10,7 @@ authors = [{ name = "Jannis Mainczyk", email = "jmainczyk@gmail.com" }]
 dependencies = ["scipy", "plotly", "fastapi[all]"]
 
 [project.optional-dependencies]
-dev = ["black", "flake8"]
+dev = ["black", "flake8", "isort"]
 test = ["pytest"]
 
 [project.urls]
@@ -26,3 +26,6 @@ ntt_peaks = "ntt_peaks.__main__:cli"
 [build-system]
 requires = ["setuptools>=43.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.isort]
+profile = "black"
