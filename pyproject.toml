@@ -7,7 +7,7 @@ requires-python = ">=3.10"
 license = { file = "LICENSE.txt" }
 keywords = ["signal", "peak", "detection"]
 authors = [{ name = "Jannis Mainczyk", email = "jmainczyk@gmail.com" }]
-dependencies = ["scipy", "plotly"]
+dependencies = ["scipy", "plotly", "fastapi[all]"]
 
 [project.optional-dependencies]
 dev = ["black"]

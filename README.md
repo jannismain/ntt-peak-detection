@@ -5,7 +5,7 @@
 - [x] Research peak detection algorithms
 - [x] Setup project structure
 - [x] Implement and test peak detection algorithm
-- [ ] Add FastAPI web interface
+- [x] Add FastAPI web interface
 
 ## Getting Started
 
