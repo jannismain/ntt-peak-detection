@@ -14,22 +14,22 @@ app = FastAPI()
 class TypeParametersMemoizer(type):
     _generics_cache = weakref.WeakValueDictionary()
 
-    def __getitem__(cls, typeparams):
+    def __getitem__(self, type_params):
         # prevent duplication of generic types
-        if typeparams in cls._generics_cache:
-            return cls._generics_cache[typeparams]
+        if type_params in self._generics_cache:
+            return self._generics_cache[type_params]
 
         # middleware class for holding type parameters
-        class TypeParamsWrapper(cls):
+        class TypeParamsWrapper(self):
             __type_parameters__ = (
-                typeparams if isinstance(typeparams, tuple) else (typeparams,)
+                type_params if isinstance(type_params, tuple) else (type_params,)
             )
 
             @classmethod
             def _get_type_parameters(cls):
                 return cls.__type_parameters__
 
-        return types.GenericAlias(TypeParamsWrapper, typeparams)
+        return types.GenericAlias(TypeParamsWrapper, type_params)
 
 
 class CommaSeparatedList(list, metaclass=TypeParametersMemoizer):
