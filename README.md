@@ -2,7 +2,6 @@
 
 ![preview](https://github.com/jannismain/ntt-peak-detection/assets/14290527/9610a54c-1d23-46d7-9191-708fb654724e)
 
-
 ## Getting Started
 
 ### Installation
@@ -24,6 +23,14 @@ Query peak detection algorithm with list of comma-separated values
 
     $ curl localhost:8000/detect_peaks?v=0,0,5,0,0
     [2]
+
+## Implementation Details
+
+Peak detection algorithms are implemented in the `ntt_peaks.lib` module and picked-up by the cli demo tool (`ntt_peaks.__main__`) automatically. This allows for rapid prototyping of different algorithms and compare them on different data sets.
+
+The FastAPI interface is implemented within `ntt_peaks.api`. It was refactored into a package to separate the (messy) argument parsing from the implementation of the endpoints (or paths).
+
+Data handling is being handled by `ntt_peaks.data`. The package also includes the example data provided with the task description for demonstration purposes. A custom representation of the data `ntt_peaks.Signal` is included to bundle x-values, y-values and its label into a single object.
 
 ## Background
 
@@ -52,10 +59,6 @@ Maybe a combined approach (**neighbours + threshold**) could reduce the number o
 ### Data preprocessing
 
 As the requirements state that the data will not include noise, data preprocessing can initially be disregarded.
-
-## Implementation Details
-
-Peak detection algorithms are implemented in `ntt_peaks.lib` and picked-up by the cli demo tool automatically. This allows for rapid prototyping of different algorithms and compare them on different data sets.
 
 ## Plan
 
