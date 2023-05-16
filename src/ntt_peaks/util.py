@@ -1,3 +1,5 @@
+"""Utility functions for dynamic access to multiple peak detection algorithms."""
+
 import inspect
 from types import FunctionType
 

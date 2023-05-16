@@ -1,3 +1,5 @@
+"""Peak detection algorithms."""
+
 import numpy as np
 
 from . import Signal
