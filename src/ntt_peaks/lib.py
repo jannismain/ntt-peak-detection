@@ -15,19 +15,13 @@ def neighbours(s: Signal) -> Signal:
 
 def threshold(s: Signal) -> Signal:
     """Detect a peak by comparing values to a threshold value."""
-    threshold = np.mean(s.y) * 5
+    threshold = np.mean(s.y) * 2
     return [idx for idx in range(len(s.y)) if s.y[idx] > threshold]
 
 
-def local_threshold(s: Signal) -> Signal:
-    """Detect a peak by comparing values to a threshold value."""
-    window = 2
-    results = []
-    for idx, v in enumerate(s.y):
-        local_threshold = np.mean(s.y[idx - window : idx + window])
-        if v > (local_threshold * 1.2):
-            results.append(idx)
-    return results
+def neighbours_and_threshold(s: Signal) -> Signal:
+    """Detect a peak by comparing values to a threshold value and neighbours."""
+    return set(neighbours(s)) & set(threshold(s))
 
 
 def scipy_regular(s: Signal) -> list[int]:
