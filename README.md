@@ -30,7 +30,7 @@ Peak detection algorithms are implemented in the `ntt_peaks.lib` module and pick
 
 The FastAPI interface is implemented within `ntt_peaks.api`. It was refactored into a package to separate the (messy) argument parsing from the implementation of the endpoints (or paths).
 
-Data handling is being handled by `ntt_peaks.data`. The package also includes the example data provided with the task description for demonstration purposes. A custom representation of the data `ntt_peaks.Signal` is included to bundle x-values, y-values and its label into a single object.
+Data loading is being handled by `ntt_peaks.data`. The package also includes the example data provided with the task description for demonstration purposes. A custom representation of the data `ntt_peaks.Signal` is included to bundle x-values, y-values and its label into a single object.
 
 ## Background
 
