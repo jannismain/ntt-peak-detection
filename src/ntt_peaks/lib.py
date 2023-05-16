@@ -2,8 +2,6 @@
 
 import numpy as np
 
-from . import Signal
-
 
 def neighbours(values: list[int | float]) -> list[int]:
     """Detect peak by comparing values to left and right neighbours.
