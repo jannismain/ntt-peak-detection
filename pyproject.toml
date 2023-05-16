@@ -1,6 +1,6 @@
 [project]
 name = "ntt_peaks"
-version = "0.0.1"
+version = "1.0.0"
 description = "Detect peaks in measured signals"
 readme = "README.md"
 requires-python = ">=3.10"
