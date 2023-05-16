@@ -13,10 +13,21 @@
 
     pip install git+https://github.com/jannismain/ntt-peak-detection.git
 
-### Usage
+### CLI Usage
 
     ntt_peaks
     ntt_peaks [[CSV_FILE] ..]
+
+### API Usage
+
+Start API Server
+
+    uvicorn ntt_peaks.api:app
+
+Query peak detection algorithm with list of comma-separated values
+
+    $ curl localhost:8000/detect_peaks?v=0,0,5,0,0
+    [2]
 
 ## Background
 
@@ -28,7 +39,7 @@ A naive definition could be that a peak is a value that is higher than both of i
 
 $$ v_{i-1} < v_{i} > v_{i+1} $$
 
-- what about plateus ($v_{i-1} < v_{i} = v_{i+1}$, $v_{i-1} = v_{i} = v_{i+1}$?
+- what about plateaus ($v_{i-1} < v_{i} = v_{i+1}$, $v_{i-1} = v_{i} = v_{i+1}$?
 - what about first and last values?
 - what about very low peaks?
 
@@ -44,4 +55,11 @@ Maybe a combined approach (**neighbours + threshold**) could reduce the number o
 
 ### Data preprocessing
 
-As the requirements state that the data will not include noise, so data preprocessing can initially be disregarded.
+As the requirements state that the data will not include noise, data preprocessing can initially be disregarded.
+
+## Final Thoughts
+
+- interesting problem, as peak detection seems to highly depend on the characteristics of the data trying to detect peaks from
+- solution (**neighbours+threshold**) works reasonably well on training data without much hyperparameter optimization
+- solution to parsing list of numbers in FastAPI seems too complicated
+- requirements not filled exactly, as API only works on single list of values, not list of value pairs right now (peak index instead of peak x-value is returned)
