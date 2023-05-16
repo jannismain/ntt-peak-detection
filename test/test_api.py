@@ -11,7 +11,14 @@ def api():
     yield api
 
 
-def test_read_main(api):
-    response = api.get("/detect_peaks?v=0,0,5,0,0")
+@pytest.mark.parametrize(
+    "data,peak_idx_expected",
+    [
+        ("0,0,5,0,0", [2]),
+        ("0,0,0,5.5,0", [3]),
+    ],
+)
+def test_api_detect_peaks(api, data, peak_idx_expected):
+    response = api.get(f"/detect_peaks?v={data}")
     assert response.status_code == 200
-    assert response.json() == [2]
+    assert response.json() == peak_idx_expected
