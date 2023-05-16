@@ -1,8 +1,11 @@
 """Load data from CSV files into Signal objects."""
 import csv
 import importlib.resources
+import logging
 import pathlib
 from dataclasses import dataclass
+
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
 headers = {
     "radius": "Radius [nm]",
@@ -38,13 +41,26 @@ def load(
     """Load csv data from file."""
     with fp.open() as f:
         reader = csv.DictReader(f, fieldnames=fieldnames, delimiter=delim)
-        next(reader)  # skip header
-        data = [tuple(float(x) for x in row.values()) for row in reader]
+        try:
+            next(reader)  # skip header
+        except StopIteration as e:
+            error(f"Empty file '{fp}'")
+        try:
+            data = [tuple(float(x) for x in row.values()) for row in reader]
+        except TypeError:
+            error(
+                f"Malformed data. A CSV file with values in two columns separated by '{delim}' is expected."
+            )
         return Signal(
             x=[sample[0] for sample in data],
             y=[sample[1] for sample in data],
             label=fp.stem,
         )
+
+
+def error(msg, returncode=1):
+    logging.error(msg)
+    exit(returncode)
 
 
 if __name__ == "__main__":

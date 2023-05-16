@@ -77,5 +77,9 @@ As the requirements state that the data will not include noise, data preprocessi
   - peak detection algorithms mostly work on y-values only
   - Should have used a Panda dataframe to represent data in more convenient and performant way -> limited prior experience with Python data science libraries
   - Own representation (`Signal(x,y,label)`) surely not the best way
+
+### Next Steps
+
+- extend api to support x- and y-values and return x-values of peaks (not index of y-values)
 - if no algorithm works on all data consistently, algorithm selection and parametrization should be included in the api call
-- with more time, tests and documentation would have been extended
+- extend test suite to include more corner cases and examples
