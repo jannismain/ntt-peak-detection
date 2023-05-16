@@ -6,8 +6,10 @@ from plotly.subplots import make_subplots
 
 from ntt_peaks import Signal, detect_peaks, load
 from ntt_peaks.data import load_example_data
+from ntt_peaks.util import _get_all_algorithms
 
-algorithms = ["neighbours_and_threshold"]
+highlight_algorithms = ["neighbours_and_threshold"]
+algorithms = list(_get_all_algorithms())
 
 
 def cli():
@@ -33,8 +35,14 @@ def cli():
                     y=signal.y,
                     **dict(
                         name=signal.label,
+                        # plot data as line, peaks as markers
                         mode="lines" if idx == 0 else "markers",
+                        # group peaks by algorithm
                         legendgroup="data" if idx == 0 else algorithms[idx - 1],
+                        # only show selected algorithms by default
+                        visible=True
+                        if idx == 0 or signal.label in highlight_algorithms
+                        else "legendonly",
                     ),
                 ),
                 row=n,
