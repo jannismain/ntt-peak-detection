@@ -23,7 +23,7 @@ def threshold(values: list[int | float]) -> Signal:
 
 def neighbours_and_threshold(values: list[int | float]) -> Signal:
     """Detect a peak by comparing values to a threshold value and neighbours."""
-    return set(neighbours(values)) & set(threshold(values))
+    return list(set(neighbours(values)) & set(threshold(values)))
 
 
 def scipy_regular(values: list[int | float]) -> list[int]:
