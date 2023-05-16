@@ -48,3 +48,6 @@ class CommaSeparatedList(list, metaclass=TypeParametersMemoizer):
     @classmethod
     def _get_type_parameters(cls):
         raise NotImplementedError("should be overridden in metaclass")
+
+
+from .endpoints import *
