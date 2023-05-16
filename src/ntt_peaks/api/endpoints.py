@@ -11,5 +11,5 @@ async def root():
 
 
 @app.get("/detect_peaks")
-def get_items(v: CommaSeparatedList[int] = Query(...)):
+def get_items(v: CommaSeparatedList[int | float] = Query(...)):
     return detect_peaks(v, "neighbours_and_threshold")
